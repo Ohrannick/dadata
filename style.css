@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  background: rgba(170, 170, 170, 0.664);
+  height: 100vh;
+  padding: 0 20px;
+}
+
+.container {
+  width: 80%;
+}
+
+label {
+  margin: 5px 0;
+  display: block;
+  font-size: 22px;
+}
+
+input {
+  min-width: 400px;
+  height: 30px;
+  font-size: 16px;
+  padding: 4px;
+}
+
+.result {
+  width: 50%;
+}
+
+.result-search {
+  visibility: hidden;
+}
+
+.result-visual {
+  visibility: visible;
+}
+
+.suggestions-input {
+  width: 100%;
+}
+
+.suggestions-wrapper {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  -webkit-text-size-adjust: 100%;
+}
+
+.suggestions-suggestions {
+  background: #fff;
+  border: 1px solid #999;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: default;
+  left: 0;
+  min-width: 100%;
+  position: absolute;
+  z-index: 9999;
+  -webkit-text-size-adjust: 100%;
+  display: none;
+}

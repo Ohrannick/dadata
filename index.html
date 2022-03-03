@@ -6,42 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Calc</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    label {
-      margin-top: 20px;
-      display: block;
-      font-size: 22px;
-    }
 
-    input {
-      min-width: 400px;
-      height: 30px;
-      font-size: 16px;
-    }
-
-    .data-search {
-      visibility: hidden;
-    }
-
-    .visual {
-      visibility: visible;
-    }
   </style>
 </head>
 
 <body>
-  <label for="inn">Компания или ИП</label>
-  <input id="inn" type="text" placeholder="Введите ИНН организации">
-  <div class="data-search">
-    <label for="name_short">Краткое наименование</label>
-    <input id="name_short" type="text">
-    <label for="name_full">Полное наименование</label>
-    <input id="name_full" type="text">
-    <label for="inn_kpp">ИНН / КПП</label>
-    <input id="inn_kpp" type="text">
-    <label for="adress">Адрес</label>
-    <input id="adress" type="text">
-  </div>
+  <section class="container">
+    <label for="inn">Компания или ИП</label>
+    <input id="inn" class="suggestions-input" type="text" placeholder="Введите ИНН организации" spellcheck="false"
+      autocapitalize="off" autocorrect="off" autocomplete="new-password">
+    <div class="suggestions-wrapper">
+      <ul class="suggestions-suggestions"></ul>
+    </div>
+  </section>
+  <section class="result">
+    <div class="result-search">
+      <label for="name_short">Краткое наименование</label>
+      <input id="name_short" type="text">
+      <label for="name_full">Полное наименование</label>
+      <input id="name_full" type="text">
+      <label for="inn_kpp">ИНН / КПП</label>
+      <input id="inn_kpp" type="text">
+      <label for="address">Адрес</label>
+      <input id="address" type="text">
+    </div>
+  </section>
   <script src="js/script.js"></script>
 </body>
 

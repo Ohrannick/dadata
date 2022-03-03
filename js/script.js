@@ -1,18 +1,19 @@
 'use strict';
 
 const url =
-  'https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party';
+  'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party';
 const token = '293f1fd3fbbded617022eec8f40c7bdbe3ae4bfc';
 
 const inputInn = document.querySelector('#inn'),
   nameShort = document.querySelector('#name_short'),
   nameFull = document.querySelector('#name_full'),
   innKpp = document.querySelector('#inn_kpp'),
-  adress = document.querySelector('#adress'),
-  dataSearch = document.querySelector('.data-search');
+  address = document.querySelector('#address'),
+  dataSearch = document.querySelector('.result-search'),
+  inputSearch = document.querySelector('.suggestions-suggestions');
 
 function getSuggestions(inn) {
-  inputInn.style.border = '1px solid black';
+  // inputInn.style.border = '1px solid black';
   const options = {
     method: 'POST',
     mode: 'cors',
@@ -26,17 +27,28 @@ function getSuggestions(inn) {
 
   fetch(url, options)
     .then((response) => response.json())
-    .then((response) => response.suggestions[0].data)
+    .then((response) => response.suggestions)
     .then((data) => {
-      dataSearch.classList.add('visual');
+      inputSearch.innerHTML = '';
+      if (data.length > 0) {
+        inputSearch.style.display = 'block';
+        data.map((item) => {
+          console.log(item.data.inn);
+          inputSearch.innerHTML += `<li>${item.data.inn}</li>`;
+        });
+      } else {
+        inputSearch.innerHTML += `<span>данные отсутствуют</span>`;
+      }
+
+      dataSearch.classList.add('result-visual');
       nameShort.value = data.name.short_with_opf;
       nameFull.value = data.name.full_with_opf;
       innKpp.value = `${data.inn} / ${data.kpp}`;
-      adress.value = data.address.value;
+      address.value = data.address.value;
     })
     .catch((err) => {
-      dataSearch.classList.remove('visual');
-      inputInn.style.border = '1px solid red';
+      dataSearch.classList.remove('result-visual');
+      // inputInn.style.border = '1px solid red';
     });
 }
 
